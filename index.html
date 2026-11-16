@@ -52,7 +52,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 22px 30px;font-size:12px;color:v
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.ls:nth-child(3n){border-right:0}.ls{border-bottom:1px solid #d5d6d7}}
 @media(max-width:620px){.grid{grid-template-columns:1fr}.ls{border-right:0}}
 </style></head><body>
-<header><div class="lv">B2</div><h1>Business Partner · Contents</h1><div class="who" id="who">Template<b>All lessons</b></div></header>
+<header><div class="lv">B2</div><h1>Business Partner · Contents</h1><div class="who" id="who">Template<b>All lessons</b></div></header><div style="text-align:right;padding:8px 22px 0"><a href="vocab.html" style="font-size:15px;color:#5b5fc7;font-weight:600;text-decoration:none;border:1.5px solid #5b5fc7;border-radius:14px;padding:4px 14px">📚 My vocabulary · train words</a></div>
 <div class="top">
  <div class="tracks" id="tracks"></div>
  <div class="prog"><span id="ptxt">0 / 0 done</span><div class="bar"><i id="pbar"></i></div></div>
@@ -78,7 +78,7 @@ const PROGRESS={};const COMMENTS={};
 const VARIANTS={"6.1": ["all"]};
 const PAGES={"6.1": ["lesson", "hw"]};  // pages ready per lesson in the template; missing → all three  // which track versions exist; missing → "all"             // filled from Supabase: {"1.1":"done","1.2":"progress"}
 let track=(STUDENT&&STUDENT.track)||"all";
-const path=(n,t,f)=>`lessons/${n.replace(".","-").toLowerCase()}/${t}/${f}.html?v=202611161532`;
+const path=(n,t,f)=>`lessons/${n.replace(".","-").toLowerCase()}/${t}/${f}.html?v=202611161615`;
 function render(){
  const box=document.getElementById("units");box.innerHTML="";let tot=0,done=0;
  DATA.units.forEach(([u,title,ls])=>{
