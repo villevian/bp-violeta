@@ -111,4 +111,4 @@ render();
 const SB_URL="https://zuegojpfhgigsvyrnymt.supabase.co",SB_KEY="sb_publishable__Xn8xRhne9Hp2ckaXu6xCQ_MOe52bng";
 if(STUDENT&&STUDENT.code){fetch(`${SB_URL}/rest/v1/rpc/get_my_progress`,{method:"POST",headers:{apikey:SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({p_code:STUDENT.code})})
  .then(r=>r.json()).then(rows=>{(rows||[]).forEach(r=>{const m=r.lesson.match(/(\d+\.\d+|W\d+)/);if(m){PROGRESS[m[1]]=r.submitted?"done":"progress";if(r.has_comment)COMMENTS[m[1]]=1}});render()}).catch(()=>{})}
-</script></body></html>
+</script><script src="https://villevian.github.io/bp-admin/cabinet.js" data-code="bb2f141b2b75a229c72b4e0bbe753714" defer></script></body></html>
