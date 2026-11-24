@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>6.1 Ethical choices · Vocabulary drill</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--or:#ff6b3d;--or2:#fff1ea;--ink:#1f2a44;--mut:#6b7387;--line:#e6e9f0;--bg:#f5f7fb;--ok:#23824a;--ok2:#e7f6ec;--re:#b26b00;--re2:#fff4e0}
+*{box-sizing:border-box;min-width:0}body{margin:0;font:16px/1.5 Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding:clamp(16px,3vw,32px) max(4vw,14px)}
+a.back{color:var(--or);text-decoration:none;font-weight:600;display:inline-block;padding:6px 0}
+h1{font-size:clamp(26px,3.4vw,34px);line-height:1.1;margin:6px 0 4px}.lead{color:var(--mut);margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.chips button{border:1.5px solid var(--line);background:#fff;border-radius:18px;padding:6px 12px;font:500 14px Inter,sans-serif;cursor:pointer;min-height:36px}
+.chips button.on{border-color:var(--or);background:var(--or2);color:#c2410c}
+.bar{display:flex;align-items:center;gap:10px;margin:10px 0 12px;flex-wrap:wrap}.prog{flex:1;height:8px;background:#e6e9f0;border-radius:4px;overflow:hidden;min-width:120px}.prog i{display:block;height:100%;background:var(--ok);width:0;transition:width .25s}
+.cnt{font-size:14px;color:var(--mut);white-space:nowrap}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,38px);min-height:330px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 26px rgba(31,42,68,.06)}
+.tag{align-self:flex-start;font-size:12.5px;font-weight:600;color:var(--mut);background:var(--bg);border-radius:10px;padding:2px 10px}
+.pr{font-size:clamp(21px,3vw,28px);font-weight:500;line-height:1.3}.ua{color:var(--mut);font-size:16px}
+.ans{display:none;border-top:1px dashed var(--line);padding-top:14px}.ans.on{display:block}
+.ans b{font-size:clamp(22px,3.2vw,30px);color:#c2410c;display:block;line-height:1.25}.ans .ex{color:var(--mut);margin-top:6px;font-style:italic}
+.ask{background:var(--or2);border-radius:12px;padding:10px 14px;margin-top:10px}.ask::before{content:"🗣 ";}
+.ctl{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.btn{border:0;border-radius:12px;padding:12px 20px;font:600 15px Inter,sans-serif;cursor:pointer;min-height:46px}
+.b1{background:var(--ink);color:#fff}.b2{background:var(--ok2);color:var(--ok)}.b3{background:var(--re2);color:var(--re)}.b4{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.done{text-align:center;padding:30px 10px}.done b{font-size:44px;display:block}
+.keys{font-size:13px;color:var(--mut);margin-top:10px}kbd{background:#fff;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 6px;font:12px Inter,sans-serif}
+footer{color:var(--mut);font-size:13px;text-align:center;padding:24px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<div class="wrap">
+<a class="back" href="../../../index.html">← My course</a>
+<h1>6.1 Ethical choices · Vocabulary drill</h1>
+<p class="lead">One card at a time. Say the word or phrase, then check. Answer the question on the card in a full sentence.</p>
+<div class="chips" id="gr"></div>
+<div class="chips" id="md"><button data-m="find" class="on">Find the word</button><button data-m="explain">Explain the word</button><button data-m="mix">Mix</button></div>
+<div class="bar"><div class="prog"><i id="pb"></i></div><span class="cnt" id="cn"></span><button class="btn b4" id="sh" style="min-height:36px;padding:6px 12px">🔀 Shuffle</button></div>
+<div class="card" id="card"></div>
+<p class="keys"><kbd>Space</kbd> show answer · <kbd>→</kbd> got it · <kbd>←</kbd> again · <kbd>Esc</kbd> start again</p>
+</div>
+<footer>Valentyna Hordiienko · Middle Learning Architect</footer>
+<script>
+{
+const G=[{"g": "Business ethics", "items": [{"p": "morally right / morally wrong", "ua": "етичний / неетичний", "a": "ethical / unethical", "q": "Name one ethical and one unethical thing a company can do."}, {"p": "materials bought in a fair and responsible way", "ua": "етично видобуті / закуплені", "a": "ethically sourced", "q": "Do you check if your clothes are ethically sourced?"}, {"p": "cotton bought at a fair price from farmers", "ua": "бавовна fair trade", "a": "fair-trade cotton", "q": "Would you pay more for fair-trade cotton?"}, {"p": "a factory where people work long hours for very little money", "ua": "потогінне виробництво", "a": "sweatshop", "q": "Why do sweatshops still exist?"}, {"p": "hard, difficult conditions at work", "ua": "важкі умови праці", "a": "tough (working) conditions"}, {"p": "very little money for work", "ua": "низька зарплата", "a": "low pay"}, {"p": "a way of making decisions based on what is right", "ua": "моральний підхід", "a": "moral approach"}, {"p": "behaviour that is not ethical", "ua": "неетична поведінка", "a": "unethical conduct", "q": "Give an example of unethical conduct in IT."}, {"p": "a company that sells clothes under its name", "ua": "бренд одягу", "a": "clothing brand"}, {"p": "all the companies and steps from raw materials to the customer", "ua": "ланцюг постачання", "a": "supply chain", "q": "Who is in the supply chain of your company’s product?"}, {"p": "open, honest, nothing hidden", "ua": "прозорий", "a": "transparent", "q": "Is your company transparent about salaries?"}]}, {"g": "Verbs + prepositions", "items": [{"p": "The brand was ___ using child labour.", "ua": "бути звинуваченим у", "a": "be accused of", "ex": "The brand was accused of using child labour."}, {"p": "Most customers aren’t ___ the problem.", "ua": "знати про, усвідомлювати", "a": "be aware of"}, {"p": "Who is ___ the working conditions?", "ua": "відповідати за", "a": "be responsible for"}, {"p": "Activists ___ fast fashion.", "ua": "вести кампанію проти", "a": "campaign against"}, {"p": "Cheap clothes ___ the environment.", "ua": "впливати на", "a": "have an impact on", "q": "What has an impact on your choices when you shop?"}, {"p": "The report ___ the whole industry, not one brand.", "ua": "розглядати (ширше)", "a": "look across"}, {"p": "Companies must ___ their suppliers.", "ua": "брати відповідальність за", "a": "take responsibility for", "q": "Should a brand take responsibility for its suppliers?"}]}, {"g": "Apps and design", "items": [{"p": "fashion made and sold extremely quickly and cheaply (Shein, Temu)", "ua": "ультрашвидка мода", "a": "ultra-fast fashion"}, {"p": "design tricks that push users to do things they didn’t plan", "ua": "темні патерни", "a": "dark patterns", "q": "Which dark pattern annoys you most?"}, {"p": "a “−70%” from a price that was never real", "ua": "фейкова знижка", "a": "fake discount"}, {"p": "making people buy fast with stress and urgency", "ua": "тиск на покупця", "a": "pressure selling"}, {"p": "“Offer ends in 09:59” on the screen", "ua": "таймер зворотного відліку", "a": "countdown timer"}, {"p": "“Only 2 left!”", "ua": "повідомлення «залишилось мало»", "a": "‘low stock’ message"}, {"p": "a feed that never ends", "ua": "нескінченна стрічка", "a": "endless scroll", "q": "Is endless scroll a dark pattern? Why?"}, {"p": "a message from an app on your phone screen", "ua": "пуш-сповіщення", "a": "push notification"}, {"p": "things that are against the law to sell", "ua": "заборонені товари", "a": "illegal products"}]}, {"g": "From the video", "items": [{"p": "a piece of clothing (formal word)", "ua": "предмет одягу", "a": "garment"}, {"p": "a company that provides goods to another company", "ua": "постачальник", "a": "supplier"}, {"p": "producing only what customers order, when they order it", "ua": "модель «на замовлення»", "a": "on-demand model", "q": "What are the pros and cons of an on-demand model?"}, {"p": "the money a company keeps from each sale", "ua": "маржа", "a": "profit margin"}, {"p": "getting money for each item you make, not per hour", "ua": "відрядна оплата", "a": "paid per piece"}, {"p": "rules about workers’ rights", "ua": "трудове законодавство", "a": "labour law"}, {"p": "a company that damages the environment", "ua": "забруднювач", "a": "polluter"}, {"p": "the idea that things are used for a short time and thrown away", "ua": "одноразовість", "a": "disposability"}]}, {"g": "Reporting a survey", "items": [{"p": "more than half of the people who answered", "ua": "більшість респондентів", "a": "the majority of respondents"}, {"p": "about 26–28%", "ua": "трохи більше чверті", "a": "just over a quarter"}, {"p": "0 people from the group", "ua": "жоден з учасників", "a": "none of the participants"}, {"p": "more than 50% of the people asked", "ua": "понад половину опитаних", "a": "over half of those surveyed"}, {"p": "start your conclusion", "ua": "результати свідчать, що", "a": "the findings suggest that", "q": "Report one finding about your own shopping habits."}]}];
+const esc=t=>String(t??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let gsel=new Set(G.map(g=>g.g)),mode="find",deck=[],again=[],done=0,total=0,cur=null,open=false,flipNow=false;
+const $=id=>document.getElementById(id);
+function build(shuffle){deck=[];G.forEach(g=>{if(gsel.has(g.g))g.items.forEach(it=>deck.push({...it,g:g.g}))});if(shuffle!==false)deck.sort(()=>Math.random()-.5);again=[];done=0;total=deck.length;next()}
+function next(){open=false;if(!deck.length&&again.length){deck=again;again=[]}cur=deck.shift()||null;flipNow=mode==="explain"||(mode==="mix"&&Math.random()<.5);draw()}
+function draw(){$("pb").style.width=(total?done/total*100:0)+"%";$("cn").textContent=`${done} / ${total}`+(again.length?` · again: ${again.length}`:"");
+ if(!cur){$("card").innerHTML=`<div class="done"><b>🎉</b><p class="pr">Well done! ${total} cards.</p><div class="ctl" style="justify-content:center"><button class="btn b1" data-a="restart">Start again</button></div></div>`;return}
+ const p=flipNow?`<span class="tag">${esc(cur.g)} · explain or use it</span><div class="pr">${esc(cur.a)}</div>`:`<span class="tag">${esc(cur.g)}</span><div class="pr">${esc(cur.p)}</div>${cur.ua?`<div class="ua">🇺🇦 ${esc(cur.ua)}</div>`:""}`;
+ const a=flipNow?`<b style="font-size:20px;color:var(--ink)">${esc(cur.p)}</b>${cur.ua?`<div class="ua">🇺🇦 ${esc(cur.ua)}</div>`:""}`:`<b>${esc(cur.a)}</b>`;
+ $("card").innerHTML=`${p}<div class="ans ${open?"on":""}" id="an">${a}${cur.ex?`<div class="ex">${esc(cur.ex)}</div>`:""}${cur.q?`<div class="ask">${esc(cur.q)}</div>`:""}</div>
+ <div class="ctl">${open?`<button class="btn b2" data-a="ok">✓ Got it</button><button class="btn b3" data-a="again">↻ Again</button>`:`<button class="btn b1" data-a="show">Show answer</button>`}</div>`}
+function act(a){if(a==="show"&&cur){open=true;draw()}else if(a==="ok"&&cur&&open){done++;next()}else if(a==="again"&&cur&&open){again.push(cur);next()}else if(a==="restart")build()}
+$("card").addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(b)act(b.dataset.a)});
+document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.code==="Space"){e.preventDefault();act(open?"ok":"show")}else if(e.key==="ArrowRight")act(open?"ok":"show");else if(e.key==="ArrowLeft"&&open)act("again");else if(e.key==="Escape")build()});
+$("gr").innerHTML=G.map(g=>`<button class="on" data-g="${esc(g.g)}">${esc(g.g)} · ${g.items.length}</button>`).join("");
+$("gr").addEventListener("click",e=>{const b=e.target.closest("[data-g]");if(!b)return;const g=b.dataset.g;if(gsel.has(g)&&gsel.size>1){gsel.delete(g);b.classList.remove("on")}else{gsel.add(g);b.classList.add("on")}build()});
+$("md").addEventListener("click",e=>{const b=e.target.closest("[data-m]");if(!b)return;mode=b.dataset.m;document.querySelectorAll("#md button").forEach(x=>x.classList.toggle("on",x===b));build()});
+$("sh").onclick=()=>build(true);
+build();
+}
+</script></body></html>
