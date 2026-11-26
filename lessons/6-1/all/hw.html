@@ -74,5 +74,14 @@ let sentBy="";
 document.addEventListener("click",e=>{if(typeof VIEW!=="undefined"&&VIEW)return;const b=e.target.closest("button");if(b&&b.id!=="submit"&&b.closest("main")&&/^check/i.test(b.textContent.trim())){submitted=true;if(!sentBy)sentBy="check";later()}},true);
 function updSubmit(){const s=$("submit");if(!s)return;const w=s.closest(".ctl")||s.parentElement;const secs=[...document.querySelectorAll("section.sec")];const show=secs.length<2||secs[secs.length-1].classList.contains("on");w.style.display=show?"":"none";const d=$("done");if(d)d.style.display=(show&&sentBy==="button")?"block":"none"}
 document.addEventListener("click",e=>{if(e.target.closest("nav button"))setTimeout(updSubmit,0)});updSubmit();
+function goStep(b){if(!b)return;b.click();setTimeout(()=>{const s=document.querySelector("section.sec.on");if(s){const y=s.getBoundingClientRect().top+scrollY-10;scrollTo({top:Math.max(0,y),behavior:"smooth"})}},30)}
+(function(){const nb=[...document.querySelectorAll("nav button[data-s]")];if(nb.length<2)return;
+ const byLabel=l=>nb.find(b=>b.textContent.replace(/[^0-9A-Za-z★–-]/g,"").toLowerCase()===String(l).toLowerCase());
+ nb.forEach((b,i)=>{const sec=document.getElementById(b.dataset.s);if(!sec)return;
+  sec.querySelectorAll("p,div,span,em,i").forEach(el=>{if(el.children.length>3)return;const m=(el.textContent||"").match(/(?:→|->)\s*Step\s*([0-9]+)/i);if(!m||el.dataset.nx)return;const t=byLabel(m[1]);if(!t)return;el.dataset.nx=1;el.style.cursor="pointer";el.style.color="var(--nxc,#2a5fb0)";el.style.textDecoration="underline";el.onclick=()=>goStep(t)});
+  if(i<nb.length-1&&!sec.querySelector(".nextbar")){const n=nb[i+1];const d=document.createElement("div");d.className="nextbar";d.style.cssText="margin:28px 0 6px;text-align:right";
+   const x=document.createElement("button");x.className="btn";x.type="button";x.style.cssText="font-size:17px;padding:10px 22px;min-height:44px";x.textContent="Next step → "+n.textContent.trim();x.onclick=()=>goStep(n);d.appendChild(x);sec.appendChild(d)}});
+ nb.forEach(b=>b.addEventListener("click",e=>{if(e.isTrusted)setTimeout(()=>{const s=document.querySelector("section.sec.on");if(s)scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-10)})},0)}));
+ const st=document.createElement("style");st.textContent="body.tv .nextbar{display:none}";document.head.appendChild(st)})();
 start();
 </script></body></html>
