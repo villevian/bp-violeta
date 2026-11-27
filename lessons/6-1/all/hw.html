@@ -90,5 +90,18 @@ function goStep(b){if(!b)return;b.click();setTimeout(()=>{const s=document.query
    const x=document.createElement("button");x.className="btn";x.type="button";x.style.cssText="font-size:17px;padding:10px 22px;min-height:44px";x.textContent="Next step → "+n.textContent.trim();x.onclick=()=>goStep(n);d.appendChild(x);sec.appendChild(d)}});
  nb.forEach(b=>b.addEventListener("click",e=>{if(e.isTrusted)setTimeout(()=>{const s=document.querySelector("section.sec.on");if(s)scrollTo({top:Math.max(0,s.getBoundingClientRect().top+scrollY-navH())})},0)}));
  const st=document.createElement("style");st.textContent="body.tv .nextbar{display:none}";document.head.appendChild(st)})();
+(function(){if(typeof VIEW!=="undefined"&&VIEW)return;
+ const pref=k=>k.replace(/_[^_]+$/,"");
+ const hist=()=>{let h=document.querySelector('textarea[data-k="_hist"]');if(!h){h=document.createElement("textarea");h.className="g";h.dataset.k="_hist";h.style.display="none";document.body.appendChild(h)}return h};
+ document.querySelectorAll(".ctl").forEach(ctl=>{const b=[...ctl.querySelectorAll("button[onclick]")].find(x=>/chk[A-Za-z]*\(\s*'[^']+'/.test(x.getAttribute("onclick")));if(!b||ctl.querySelector(".redo"))return;
+  const p=b.getAttribute("onclick").match(/chk[A-Za-z]*\(\s*'([^']+)'/)[1];
+  const r=document.createElement("button");r.type="button";r.className="btn l redo";r.style.cssText="margin-left:8px;min-height:40px";r.textContent="↺ Try again";r.title="Clear your answers in this exercise and do it again";
+  let armed=0,tm=null;r.onclick=()=>{if(!armed){armed=1;r.textContent="Clear answers? Tap again";clearTimeout(tm);tm=setTimeout(()=>{armed=0;r.textContent="↺ Try again"},3500);return}
+   armed=0;r.textContent="↺ Try again";const els=[...document.querySelectorAll("[data-k]")].filter(e=>e.dataset.k!=="_hist"&&pref(e.dataset.k)===p);const old={};
+   els.forEach(e=>{if(e.type==="radio"){if(e.checked)old[e.dataset.k]=e.value;e.checked=false}else{if(e.value)old[e.dataset.k]=e.value;if(e.tagName==="SELECT")e.selectedIndex=0;else e.value=""}e.classList.remove("right","wrong");const f=document.getElementById("fb_"+e.dataset.k);if(f){f.innerHTML="";f.className=f.className.replace(/\b(show|ok|no)\b/g,"").trim()}});
+   if(Object.keys(old).length){const h=hist();let a=[];try{a=JSON.parse(h.value||"[]")}catch(e){}a.push({ex:p,at:new Date().toISOString(),answers:old});h.value=JSON.stringify(a)}
+   const res=document.getElementById("r_"+p);if(res)res.textContent="";if(typeof ECT!=="undefined")Object.keys(ECT).forEach(k=>{if(pref(k)===p)delete ECT[k]});
+   if(typeof navUpd==="function")navUpd();const first=els.find(e=>e.type!=="radio");if(first)first.focus();if(typeof later==="function")later()};
+  b.after(r)})})();
 start();
 </script></body></html>
